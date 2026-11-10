@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Услуги и цены Obsidian Detailing: мойка, полировка, керамика, химчистка и защитная плёнка в Астане.">
+  <title>Obsidian Detailing | Услуги и цены</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg sticky-top site-nav" data-bs-theme="dark" aria-label="Основное меню">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">OBSIDIAN<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mainMenu" aria-controls="mainMenu"
+              aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="services.html">Услуги и цены</a></li>
+          <li class="nav-item"><a class="nav-link" href="works.html">Работы</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item"><a class="nav-link" href="account.html" data-auth-link>Войти</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-accent btn-sm" href="booking.html">Записаться</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content">
+    <header class="page-head">
+      <div class="container">
+        <p class="hero-tag fade-up">Услуги и цены</p>
+        <h1 class="fade-up d2">Прозрачные цены.<br>Без скрытых доплат.</h1>
+        <p class="fade-up d3">Стоимость зависит от размера автомобиля и состояния кузова. Точную цену назовём после бесплатного осмотра.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Пакеты</h2>
+        <p class="section-lead reveal">Три готовых решения для разных задач. Цены указаны для седана.</p>
+        <div class="row g-4" id="packages"></div>
+      </div>
+    </section>
+
+    <section class="section price-section" id="price">
+      <div class="container">
+        <h2 class="section-title reveal">Полный прайс</h2>
+        <p class="section-lead reveal">Найдите услугу, выберите класс автомобиля и отметьте нужное: итог посчитается сразу.</p>
+
+        <div class="toolbar">
+          <div class="tool">
+            <span class="tool-label" id="classLabel">Класс автомобиля</span>
+            <div class="chips" id="classChips" role="group" aria-labelledby="classLabel">
+              <button type="button" class="chip" data-cls="sedan" aria-pressed="true">Седан</button>
+              <button type="button" class="chip" data-cls="crossover" aria-pressed="false">Кроссовер</button>
+              <button type="button" class="chip" data-cls="suv" aria-pressed="false">Внедорожник</button>
+            </div>
+          </div>
+          <div class="tool">
+            <span class="tool-label" id="catLabel">Категория</span>
+            <div class="chips" id="catChips" role="group" aria-labelledby="catLabel">
+              <button type="button" class="chip" data-cat="all" aria-pressed="true">Все</button>
+              <button type="button" class="chip" data-cat="wash" aria-pressed="false">Мойка</button>
+              <button type="button" class="chip" data-cat="polish" aria-pressed="false">Полировка</button>
+              <button type="button" class="chip" data-cat="protect" aria-pressed="false">Защита</button>
+              <button type="button" class="chip" data-cat="interior" aria-pressed="false">Салон</button>
+            </div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="tool grow">
+            <label for="priceSearch">Поиск по услугам</label>
+            <input type="search" id="priceSearch" class="form-control tool-input" placeholder="Например: керамика" autocomplete="off">
+          </div>
+          <div class="tool">
+            <label for="priceSort">Сортировка</label>
+            <select id="priceSort" class="form-select tool-input">
+              <option value="name">По названию</option>
+              <option value="asc">Сначала дешевле</option>
+              <option value="desc">Сначала дороже</option>
+              <option value="time">Сначала быстрее</option>
+            </select>
+          </div>
+        </div>
+        <p class="result-count" id="priceCount" aria-live="polite"></p>
+
+        <div class="price-wrap" id="priceWrap">
+          <table class="price-table">
+            <caption>Стоимость услуг по классам автомобиля, ₸</caption>
+            <thead id="priceHead">
+              <tr>
+                <th scope="col">В расчёт</th>
+                <th scope="col">Услуга</th>
+                <th scope="col" data-class="sedan">Седан</th>
+                <th scope="col" data-class="crossover">Кроссовер</th>
+                <th scope="col" data-class="suv">Внедорожник</th>
+                <th scope="col">Срок</th>
+              </tr>
+            </thead>
+            <tbody id="priceBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="priceEmpty" style="display:none">
+          <strong>Услуга не найдена</strong>
+          <span>Проверьте написание или сбросьте фильтры.</span><br>
+          <button type="button" class="btn btn-ghost mt-3" id="resetFilters">Сбросить фильтры</button>
+        </div>
+        <p class="price-note">Цены ориентировочные. Окончательная стоимость определяется после осмотра.</p>
+
+        <div class="cart-bar" id="cartBar" style="display:none" role="region" aria-label="Выбранные услуги" aria-live="polite">
+          <div><span>Выбрано услуг: <b id="cartCount">0</b></span><span>Срок: <b id="cartHours">0 ч</b></span></div>
+          <div class="cart-total"><span>Итого от</span><strong id="cartTotal">0 ₸</strong></div>
+          <div class="cart-actions">
+            <button type="button" class="btn btn-ghost btn-sm" id="cartClear">Очистить</button>
+            <a href="booking.html" class="btn btn-accent btn-sm">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="finder">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-12 col-lg-7">
+            <h2 class="section-title reveal">Подберите пакет</h2>
+            <p class="section-lead reveal">Ответьте на несколько вопросов, и мы рассчитаем подходящий пакет и стоимость.</p>
+            <form id="finderForm" class="site-form" data-bs-theme="dark" novalidate>
+              <fieldset>
+                <legend>О вас и автомобиле</legend>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6"><div class="field" data-field="name">
+<label for="name" class="form-label">Имя</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Ерлан" autocomplete="given-name">
+<div class="field-error" id="name-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="email">
+<label for="email" class="form-label">E-mail</label>
+<input type="email" class="form-control" id="email" name="email" placeholder="name@mail.kz" autocomplete="email">
+<div class="field-error" id="email-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="year">
+<label for="year" class="form-label">Год выпуска автомобиля</label>
+<input type="number" class="form-control" id="year" name="year" placeholder="2021" inputmode="numeric">
+<div class="field-error" id="year-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="carClass">
+<label for="carClass" class="form-label">Класс автомобиля</label>
+<select class="form-select" id="carClass" name="carClass">
+  <option value="" selected>Выберите класс</option>
+  <option value="sedan">Седан</option>
+  <option value="crossover">Кроссовер</option>
+  <option value="suv">Внедорожник</option>
+</select>
+<div class="field-error" id="carClass-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="condition">
+<label for="condition" class="form-label">Состояние кузова</label>
+<select class="form-select" id="condition" name="condition">
+  <option value="" selected>Выберите состояние</option>
+  <option value="good">Хорошее, почти без царапин</option>
+  <option value="medium">Есть мелкие царапины</option>
+  <option value="bad">Глубокие царапины, потускнел лак</option>
+</select>
+<div class="field-error" id="condition-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="budget">
+<label for="budget" class="form-label">Бюджет, ₸</label>
+<input type="number" class="form-control" id="budget" name="budget" placeholder="150000" inputmode="numeric">
+<div class="field-error" id="budget-error" role="alert"></div>
+</div></div>
+                  <div class="col-12">
+                    <div class="field" data-field="goal">
+                      <p class="form-label mb-2" id="goalLabel">Что для вас важнее всего</p>
+                      <div class="goal-grid" role="radiogroup" aria-labelledby="goalLabel">
+                        <label class="class-option"><input type="radio" name="goal" value="protect"><span><b>Защита</b><small>Надолго сохранить блеск</small></span></label>
+                        <label class="class-option"><input type="radio" name="goal" value="restore"><span><b>Восстановление</b><small>Убрать царапины</small></span></label>
+                        <label class="class-option"><input type="radio" name="goal" value="interior"><span><b>Салон</b><small>Чистота и без запаха</small></span></label>
+                        <label class="class-option"><input type="radio" name="goal" value="sell"><span><b>Продажа</b><small>Подготовить к продаже</small></span></label>
+                      </div>
+                      <div class="field-error" id="goal-error" role="alert"></div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn btn-accent w-100">Рассчитать пакет</button>
+            </form>
+          </div>
+          <div class="col-12 col-lg-5">
+            <aside class="finder-result" id="finderResult" role="status" aria-live="polite">
+              <span class="success-icon" aria-hidden="true">✓</span>
+              <p class="text-muted-2 mb-1"><span id="fName"></span>, мы рекомендуем</p>
+              <h3 id="fPackage"></h3>
+              <p class="finder-price" id="fPrice"></p>
+              <p class="text-muted-2" id="fBudget"></p>
+              <ul id="fReasons"></ul>
+              <a href="booking.html" class="btn btn-accent w-100">Записаться на осмотр</a>
+            </aside>
+            <aside class="finder-hint" aria-label="Подсказка">
+              <h3>Как это работает</h3>
+              <p class="text-muted-2 mb-0">Учитываем цель, возраст автомобиля, состояние лака и бюджет. Результат появится здесь сразу после отправки формы.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container">
+        <h2 class="section-title reveal">Частые вопросы</h2>
+        <p class="section-lead reveal">Коротко о том, что спрашивают чаще всего.</p>
+        <div class="accordion faq" id="faq">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">Сколько служит керамическое покрытие?</button>
+            </h3>
+            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+              <div class="accordion-body">До 5 лет при правильном уходе. На покрытие выдаётся письменная гарантия, а первое обслуживание через полгода бесплатно.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">Нужна ли полировка перед керамикой?</button>
+            </h3>
+            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faq">
+              <div class="accordion-body">Да. Керамика закрепляет состояние лака, поэтому царапины и голограммы убираем заранее. Поэтому в пакет Ceramic входит коррекционная полировка.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">Как долго машина будет в студии?</button>
+            </h3>
+            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faq">
+              <div class="accordion-body">От 3 часов для мойки до 3 дней для полного комплекса. Срок называем заранее, а о ходе работ присылаем фотоотчёт.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4" aria-expanded="false" aria-controls="q4">Можно ли оплатить частями?</button>
+            </h3>
+            <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faq">
+              <div class="accordion-body">Да. Для крупных услуг, таких как керамика и плёнка, возможна предоплата 50 процентов, а остаток при выдаче.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container text-center">
+        <h2>Не знаете, что выбрать?</h2>
+        <p class="text-muted-2">Приезжайте на бесплатный осмотр, и мастер подберёт решение под ваш автомобиль.</p>
+        <a href="booking.html" class="btn btn-accent">Записаться на осмотр</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <p class="footer-title">Obsidian Detailing</p>
+          <p>Детейлинг-студия премиум-класса в Астане.</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <p class="footer-title">Страницы</p>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="services.html">Услуги и цены</a></li>
+            <li><a href="works.html">Работы</a></li>
+            <li><a href="booking.html">Запись</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="account.html">Личный кабинет</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <p class="footer-title">Контакты</p>
+          <p class="mb-0">Астана, ул. Култегин, 10<br><a href="tel:+77056176779">+7 (705) 617-67-79</a><br>Ежедневно 09:00–20:00</p>
+        </div>
+      </div>
+      <hr style="border-color: var(--line)">
+      <p class="mb-0 text-center">© 2026 Obsidian Detailing. Учебный проект.  Шрифты: Google Fonts.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="to-top" aria-label="Наверх">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

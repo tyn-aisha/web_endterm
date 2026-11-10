@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Контакты Obsidian Detailing: адрес, телефон, график работы и карта проезда в Астане.">
+  <title>Obsidian Detailing | Контакты</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contacts.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+  <nav class="navbar navbar-expand-lg sticky-top site-nav" data-bs-theme="dark" aria-label="Основное меню">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">OBSIDIAN<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mainMenu" aria-controls="mainMenu"
+              aria-expanded="false" aria-label="Открыть меню">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Услуги и цены</a></li>
+          <li class="nav-item"><a class="nav-link" href="works.html">Работы</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a></li>
+          <li class="nav-item"><a class="nav-link" href="account.html" data-auth-link>Войти</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-accent btn-sm" href="booking.html">Записаться</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content">
+    <header class="page-head">
+      <div class="container">
+        <p class="hero-tag fade-up">Контакты</p>
+        <h1 class="fade-up d2">Приезжайте.<br>Мы на связи.</h1>
+        <p class="fade-up d3">Позвоните, напишите или заезжайте на бесплатный осмотр. Отвечаем в течение часа в рабочее время.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-3"><article class="card-gloss contact-card"><span class="icon">01</span><h2 class="card-h">Адрес</h2><p class="text-muted-2 mb-0">Астана, ул. Култегин, 10<br>Въезд со двора, ворота студии</p></article></div>
+          <div class="col-12 col-md-6 col-lg-3"><article class="card-gloss contact-card"><span class="icon">02</span><h2 class="card-h">Телефон</h2><p class="mb-0"><a href="tel:+77056176779">+7 (705) 617-67-79</a></p><p class="text-muted-2 mb-0">Звонки и WhatsApp</p></article></div>
+          <div class="col-12 col-md-6 col-lg-3"><article class="card-gloss contact-card"><span class="icon">03</span><h2 class="card-h">Почта</h2><p class="mb-0"><a href="mailto:hello@obsidian-detailing.kz">hello@obsidian-detailing.kz</a></p><p class="text-muted-2 mb-0">Ответим в рабочие часы</p></article></div>
+          <div class="col-12 col-md-6 col-lg-3"><article class="card-gloss contact-card"><span class="icon">04</span><h2 class="card-h">Мессенджеры</h2><p class="mb-0"><a href="https://wa.me/77056176779" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://t.me/+77056176779" target="_blank" rel="noopener">Telegram</a></p><p class="text-muted-2 mb-0">Фото работ и быстрые вопросы</p></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hours-section">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-start">
+          <div class="col-12 col-lg-5">
+            <h2 class="section-title reveal">График работы</h2>
+            <p class="open-status" id="openStatus" role="status" aria-live="polite">Проверяем время…</p>
+            <table class="hours-table">
+              <caption>Часы работы студии по дням недели (время Астаны)</caption>
+              <thead><tr><th scope="col">День</th><th scope="col">Студия</th><th scope="col">Осмотр</th></tr></thead>
+              <tbody id="hoursBody"></tbody>
+            </table>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="map-wrap">
+              <iframe title="Карта: студия Obsidian Detailing, Астана, ул. Култегин, 10" loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=71.395%2C51.078%2C71.435%2C51.100&amp;layer=mapnik&amp;marker=51.089%2C71.415"></iframe>
+            </div>
+            <button type="button" class="btn btn-ghost route-toggle" id="routeToggle" aria-expanded="false" aria-controls="routeSteps">Показать, как проехать</button>
+            <ol class="route" id="routeSteps" style="display:none">
+              <li><b>На машине:</b> заезжайте во двор по ул. Култегин, ворота студии справа, гостевая парковка бесплатная.</li>
+              <li><b>На автобусе:</b> выйдите на ближайшей остановке и пройдите 5 минут пешком вдоль ул. Култегин.</li>
+              <li><b>Такси:</b> укажите адрес «Култегин, 10» и попросите въехать во двор.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-12 col-lg-5">
+            <h2 class="section-title reveal">Быстрые ответы</h2>
+            <p class="section-lead reveal">Начните печатать вопрос: оплата, гарантия, сроки.</p>
+            <div class="tool">
+              <label for="answerSearch">Поиск по ответам</label>
+              <input type="search" id="answerSearch" class="form-control tool-input" placeholder="Например: гарантия" autocomplete="off">
+            </div>
+            <p class="result-count mt-3" id="answerCount" aria-live="polite"></p>
+            <div id="answerList"></div>
+          </div>
+          <div class="col-12 col-lg-7">
+            <h2 class="section-title reveal">Напишите нам</h2>
+            <p class="section-lead reveal">Если не нашли ответ, оставьте сообщение, и мы свяжемся с вами.</p>
+            <div class="form-success" id="contactSuccess" role="status">
+              <span class="success-icon" aria-hidden="true">✓</span>
+              <h3>Сообщение отправлено</h3>
+              <p id="contactSuccessText"></p>
+            </div>
+            <form id="contactForm" class="site-form" data-bs-theme="dark" novalidate>
+              <fieldset>
+                <legend>Ваше сообщение</legend>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6"><div class="field" data-field="name">
+<label for="name" class="form-label">Имя</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Ерлан" autocomplete="given-name">
+<div class="field-error" id="name-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="phone">
+<label for="phone" class="form-label">Телефон</label>
+<input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 700 000 00 00" autocomplete="tel">
+<div class="field-error" id="phone-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="email">
+<label for="email" class="form-label">E-mail</label>
+<input type="email" class="form-control" id="email" name="email" placeholder="name@mail.kz" autocomplete="email">
+<div class="field-error" id="email-error" role="alert"></div>
+</div></div>
+                  <div class="col-12 col-md-6"><div class="field" data-field="topic">
+<label for="topic" class="form-label">Тема</label>
+<select class="form-select" id="topic" name="topic">
+  <option value="" selected>Выберите тему</option>
+  <option>Вопрос по услугам</option>
+  <option>Стоимость и расчёт</option>
+  <option>Гарантия и обслуживание</option>
+  <option>Сотрудничество</option>
+</select>
+<div class="field-error" id="topic-error" role="alert"></div>
+</div></div>
+                  <div class="col-12"><div class="field" data-field="message">
+<label for="message" class="form-label">Сообщение</label>
+<textarea class="form-control" id="message" name="message" rows="4" placeholder="Например: хочу узнать про керамику для чёрного кроссовера"></textarea>
+<div class="field-error" id="message-error" role="alert"></div>
+</div></div>
+                  <div class="col-12"><div class="field" data-field="consent">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="consent" name="consent"><label class="form-check-label consent-label" for="consent">Согласен на обработку персональных данных</label></div>
+                    <div class="field-error" id="consent-error" role="alert"></div>
+                  </div></div>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn btn-accent w-100">Отправить сообщение</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <p class="footer-title">Obsidian Detailing</p>
+          <p>Детейлинг-студия премиум-класса в Астане.</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <p class="footer-title">Страницы</p>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="services.html">Услуги и цены</a></li>
+            <li><a href="works.html">Работы</a></li>
+            <li><a href="booking.html">Запись</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="account.html">Личный кабинет</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <p class="footer-title">Контакты</p>
+          <p class="mb-0">Астана, ул. Култегин, 10<br><a href="tel:+77056176779">+7 (705) 617-67-79</a><br>Ежедневно 09:00–20:00</p>
+        </div>
+      </div>
+      <hr style="border-color: var(--line)">
+      <p class="mb-0 text-center">© 2026 Obsidian Detailing. Шрифты: Google Fonts.</p>
+    </div>
+  </footer>
+
+  <button type="button" class="to-top" aria-label="Наверх">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/contacts.js"></script>
+</body>
+</html>

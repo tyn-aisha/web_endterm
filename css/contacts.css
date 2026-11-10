@@ -1,0 +1,120 @@
+.contact-card h3 { font-size: 1.25rem; }
+.contact-card a { text-decoration: none; font-weight: 500; word-break: break-word; }
+.contact-card a:hover { text-decoration: underline; }
+
+.hours-section { background: linear-gradient(180deg, var(--bg), #0E1217); }
+.hours-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.hours-table caption {
+  caption-side: top;
+  padding: 0 0 var(--space);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.hours-table thead th {
+  background: rgba(61,169,252,0.10);
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  text-align: left;
+}
+.hours-table td,
+.hours-table tbody th {
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  border-top: 1px solid var(--line);
+  text-align: left;
+  font-weight: 400;
+}
+.hours-table tbody th { color: var(--text); font-weight: 500; }
+.hours-table td { color: var(--muted); }
+.hours-table tr.today { background: rgba(61,169,252,0.14); }
+.hours-table tr.today th,
+.hours-table tr.today td { color: var(--text); }
+.hours-table tr.today th {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.map-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.map-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.6) brightness(0.9);
+}
+
+.route {
+  list-style: none;
+  padding: 0;
+  margin: calc(var(--space) * 3) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  color: var(--muted);
+}
+.route li {
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 2);
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.route b { color: var(--text); }
+
+@media (max-width: 768px) {
+  .map-wrap { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 480px) {
+  .hours-table thead th,
+  .hours-table td,
+  .hours-table tbody th {
+    padding: var(--space) calc(var(--space) * 1.5);
+    font-size: 0.85rem;
+  }
+  .map-wrap { aspect-ratio: 1 / 1; }
+}
+/* ---------- endterm: contacts ---------- */
+.card-h { font-size: 1.25rem; }
+.open-status {
+  display: inline-flex; align-items: center; gap: var(--space);
+  margin-bottom: calc(var(--space) * 3); padding: 6px 16px;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.9rem;
+}
+.open-status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+.open-status.is-open { color: var(--ok); border-color: rgba(61, 220, 151, 0.4); }
+.open-status.is-open::before { background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+.open-status.is-closed { color: #FF8A84; border-color: rgba(255, 107, 99, 0.4); }
+.open-status.is-closed::before { background: var(--danger); }
+.route-toggle { margin-top: calc(var(--space) * 2); }
+.route { margin-top: calc(var(--space) * 2); }
+
+.qa { margin-bottom: var(--space); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: border-color 0.3s; }
+.qa:hover, .qa.open { border-color: var(--accent); }
+.qa-btn {
+  display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  background: transparent; border: 0; color: var(--text); cursor: pointer;
+}
+.qa-topic { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); }
+.qa-q { font-weight: 500; }
+.qa-a { padding: 0 calc(var(--space) * 3) calc(var(--space) * 2); color: var(--muted); font-size: 0.95rem; }
+.consent-label { color: var(--muted); }
+.hours-table tr.today td:last-child, .hours-table tr.today th { font-weight: 500; }
